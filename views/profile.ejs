@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social-link-profile</title>
+  <link rel="stylesheet" href="/stylesheets/profile.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card__text">
+        <div class="card__img">
+          <img src="https://images.unsplash.com/photo-1627226515013-2e5995e3547e?q=80&w=1528&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+        </div>
+        <div class="card__detail">
+          <h1 class="card__header"><%= user.username %></h1>
+          <h2 class="card__name"><%= user.username %></h2>
+          <h3 class="card__job">"Dev"</h3>
+          <a href="/logout" class="button">Logout</a>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="text" name="filecaption" placeholder="Caption">
+            <input type="file" name="file">
+            <button type="submit">Upload</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="cards flex">
+      <% user.posts.forEach(function(post){%>
+        <div class="card">
+          <img src="/images/uploads/<%=post.image%>" class="card-img" alt="">
+          <div class="card-body">
+            <h5 class="card-title"><%=post.imageText%></h5>
+          </div>
+        </div>
+      <%})%>
+    </div>
+  </div>
+</body>
+</html>
